@@ -1,19 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { InputField, Label, InputValue } from './styles';
+import { Container, Label, InputValue, InputField, Button } from './styles';
 
-function Input({ inputType }) {
+/**
+ * @param {string} type - Tipo do input
+ * @param {string} inputTitle - Titulo do input
+ */
+
+function Input({ type, inputTitle, onChange, value, placeholder, button }) {
   return (
-    <InputField>
-      <Label>teste</Label>
-      <InputValue type={inputType} />
-    </InputField>
+    <Container className="input" onmouseho>
+      <InputField>
+        <Label>{inputTitle}</Label>
+        <InputValue
+          type={type}
+          onChange={onChange}
+          value={value}
+          placeholder={placeholder}
+        />
+      </InputField>
+
+      {button && <Button>Entrar</Button>}
+    </Container>
   );
 }
 
 Input.propTypes = {
-  inputType: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  inputTitle: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  button: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+};
+
+Input.defaultProps = {
+  placeholder: '',
 };
 
 export default Input;
