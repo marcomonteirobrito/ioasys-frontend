@@ -16,7 +16,7 @@ export const ButtonContainer = styled.button`
   }
 
   :disabled {
-    cursor: default;
+    cursor: not-allowed;
     color: #c7c7cc;
   }
 `;
