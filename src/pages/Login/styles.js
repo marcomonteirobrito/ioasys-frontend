@@ -38,3 +38,21 @@ export const LogoContainer = styled.div`
   height: 36px;
   margin-right: 16px;
 `;
+
+export const ErrorField = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24px;
+  background: rgba(255, 255, 255, 0.4);
+  width: 239px;
+  height: 48px;
+  border-radius: 4px;
+  font-weight: 700;
+  color: ${Colors.white};
+
+  div #arrow {
+    background: red;
+    margin-top: 46px;
+  }
+`;

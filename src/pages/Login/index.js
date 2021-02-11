@@ -1,17 +1,42 @@
-import React, { useState } from 'react';
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
+import React, { useState, useEffect } from 'react';
 
 import Input from '../../components/Input';
+
 import {
   Container,
   Title,
   LoginContainer,
   HeaderContainer,
   LogoContainer,
+  ErrorField,
 } from './styles';
 
-function Login() {
+import { loginApi } from './loginApi';
+
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [authFailed, setAuthFailed] = useState(true);
+  const [disabledButton, setDisabledButton] = useState(false);
+
+  useEffect(() => {
+    if (email === '' && password === '') {
+      setDisabledButton(true);
+    } else {
+      setDisabledButton(false);
+    }
+  }, [email, password]);
+
+  const handleLogin = async () => {
+    try {
+      await loginApi({ email, password });
+    } catch (err) {
+      console.error('Falha no login');
+      setAuthFailed(true);
+    }
+  };
 
   return (
     <Container>
@@ -22,23 +47,34 @@ function Login() {
         </HeaderContainer>
 
         <Input
-          inputTitle="Email"
-          inputType="email"
-          placeholder="Digite seu melhor e-mail"
-          onChange={(event) => setEmail(event.value)}
+          id="input-email"
+          name="email"
+          className="input-email"
+          type="text"
+          onChange={(event) => setEmail(event.target.value)}
           value={email}
+          placeholder="teste"
+          inputTitle="Email"
         />
+
         <Input
-          inputTitle="Senha"
-          inputType="password"
-          placeholder="Digite sua senha"
-          onChange={(event) => setPassword(event.value)}
+          id="input-password"
+          name="password"
+          className="input-password"
+          type="password"
+          onChange={(event) => setPassword(event.target.value)}
           value={password}
+          placeholder="teste"
+          inputTitle="Senha"
           button
+          buttonClick={handleLogin}
+          disabledButton={disabledButton}
         />
+
+        {authFailed && <ErrorField>Email e/ou senha incorretos.</ErrorField>}
       </LoginContainer>
     </Container>
   );
-}
+};
 
 export default Login;

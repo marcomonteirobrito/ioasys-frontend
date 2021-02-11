@@ -32,6 +32,7 @@ const Input = ({
   button,
   buttonClick,
   loading,
+  disabledButton,
 }) => (
   <Container className={className}>
     <InputContainer>
@@ -48,7 +49,7 @@ const Input = ({
     </InputContainer>
 
     {button && (
-      <Button onClick={buttonClick} loading={loading}>
+      <Button onClick={buttonClick} loading={loading} disabled={disabledButton}>
         Entrar
       </Button>
     )}
@@ -67,6 +68,7 @@ Input.propTypes = {
   className: PropTypes.string,
   id: PropTypes.string,
   loading: PropTypes.bool,
+  disabledButton: PropTypes.bool,
 };
 
 Input.defaultProps = {
@@ -77,6 +79,7 @@ Input.defaultProps = {
   placeholder: '',
   buttonClick: () => {},
   loading: false,
+  disabledButton: false,
 };
 
 export default Input;
