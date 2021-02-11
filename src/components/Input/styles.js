@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import Colors from '../../utils/Colors';
 
-export const InputValue = styled.input`
+export const InputField = styled.input`
   border: none;
   box-shadow: none;
   background: none;
@@ -25,7 +25,7 @@ export const Label = styled.div`
   margin: 8px 0px 4px 16px;
 `;
 
-export const InputField = styled.div`
+export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -60,7 +60,7 @@ export const Container = styled.div`
   background: ${Colors.black32};
 
   &:hover {
-    ${InputValue} {
+    ${InputField} {
       display: flex;
     }
   }
