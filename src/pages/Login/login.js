@@ -2,7 +2,7 @@
 /* eslint-disable prettier/prettier */
 import React, { useState, useEffect } from 'react';
 
-import Input from '../../components/Input';
+import Input from '../../components/Input/input';
 
 import {
   Container,
