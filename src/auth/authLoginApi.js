@@ -1,4 +1,4 @@
-import { baseURL } from '../../utils/BaseUrl';
+import { baseURL } from '../utils/BaseUrl';
 
 export const getAuthLogin = async ({ email, password }) => {
   try {

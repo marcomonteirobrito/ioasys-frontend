@@ -13,7 +13,7 @@ import {
   ErrorField,
 } from './styles';
 
-import { getAuthLogin } from './authApi';
+import { getAuthLogin } from '../../auth/authLoginApi';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -33,20 +33,9 @@ const Login = () => {
     try {
       await getAuthLogin({ email, password });
     } catch (err) {
-      console.error('Falha no login');
       setAuthFailed(true);
     }
   };
-
-  // const handleLogin = async () => {
-  //   try {
-  //     const teste = await loginApi();
-  //     console.log(teste);
-  //   } catch (err) {
-  //     console.error('Falha no login');
-  //     setAuthFailed(true);
-  //   }
-  // };
 
   return (
     <Container>
