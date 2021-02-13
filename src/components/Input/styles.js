@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import Colors from '../../utils/Colors';
+import Colors from '../../commons/Colors';
 
 export const InputField = styled.input`
   border: none;

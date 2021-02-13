@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import background from '../../assets/background.png';
-import Colors from '../../utils/Colors';
+import Colors from '../../commons/Colors';
 import Logo from '../../assets/Logo.png';
 
 export const Container = styled.div`

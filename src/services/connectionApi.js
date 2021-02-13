@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { baseURL } from '../utils/BaseUrl';
+import { baseURL } from '../commons/BaseUrl';
 
 const connectionApi = axios.create({
   baseURL,
