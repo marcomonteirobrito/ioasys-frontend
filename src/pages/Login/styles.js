@@ -6,12 +6,12 @@ import Logo from '../../assets/Logo.png';
 
 export const Container = styled.div`
   display: flex;
-  background-image: url(${background});
-  height: 100vh;
-  background-size: cover;
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
+  background: url(${background}) no-repeat;
+  background-size: cover;
+  height: 100vh;
 `;
 
 export const Title = styled.label`
@@ -37,22 +37,4 @@ export const LogoContainer = styled.div`
   width: 104px;
   height: 36px;
   margin-right: 16px;
-`;
-
-export const ErrorField = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 24px;
-  background: rgba(255, 255, 255, 0.4);
-  width: 239px;
-  height: 48px;
-  border-radius: 4px;
-  font-weight: 700;
-  color: ${Colors.white};
-
-  div #arrow {
-    background: red;
-    margin-top: 46px;
-  }
 `;

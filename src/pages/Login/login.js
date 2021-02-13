@@ -1,10 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import loginSchemaValidate from '../../commons/loginSchema';
 
 import Input from '../../components/Input/input';
+import ErrorMessage from '../../components/Error/error';
 
 import {
   Container,
@@ -12,7 +14,6 @@ import {
   LoginContainer,
   HeaderContainer,
   LogoContainer,
-  ErrorField,
 } from './styles';
 
 import { getAuthLogin } from '../../auth/authLoginApi';
@@ -22,6 +23,8 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [authFailed, setAuthFailed] = useState(true);
   const [disabledButton, setDisabledButton] = useState(false);
+
+  const history = useHistory();
 
   useEffect(() => {
     if (email.length === 0 && password.length === 0) {
@@ -35,14 +38,14 @@ const Login = () => {
     try {
       await loginSchemaValidate.validate(requestBody);
     } catch (err) {
-      throw new Error(err);
+      throw new Error(err.errors);
     }
   };
 
   const saveTokenLocalStorage = async (response) => {
     try {
       localStorage.setItem('token', response.headers.authorization);
-      localStorage.setItem('refresh-token', response.headers.refresh.token);
+      localStorage.setItem('refresh-token', response.headers['refresh-token']);
     } catch (err) {
       throw new Error({ error: 'Erro ao salvar token', detail: err });
     }
@@ -55,13 +58,15 @@ const Login = () => {
 
       const response = await getAuthLogin(requestBody);
       await saveTokenLocalStorage(response);
+
+      setAuthFailed(false);
+
+      history.push('/dashboard');
     } catch (err) {
       setAuthFailed(true);
+      console.error(err.message);
     }
   };
-
-  console.log(email);
-  console.log(password);
 
   return (
     <Container>
@@ -97,7 +102,7 @@ const Login = () => {
           disabledButton={disabledButton}
         />
 
-        {authFailed && <ErrorField>Email e/ou senha incorretos.</ErrorField>}
+        {authFailed && <ErrorMessage message="Email e/ou senha incorretos." />}
       </LoginContainer>
     </Container>
   );
