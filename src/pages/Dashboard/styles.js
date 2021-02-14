@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { FiLogOut } from 'react-icons/fi';
 
 import firstDashboardBackground from '../../assets/dashboard1.png';
-// import secondDashboardBackground from '../../assets/dashboard2.png';s
+import secondDashboardBackground from '../../assets/dashboard2.png';
 import Colors from '../../commons/Colors';
 import LogoIoasys from '../../assets/LogoBlack.png';
 
@@ -11,7 +11,8 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background: url(${firstDashboardBackground}) no-repeat;
+  background: url(${secondDashboardBackground}),
+    url(${firstDashboardBackground}), no-repeat;
   background-size: cover;
   height: 100vh;
 `;
@@ -44,6 +45,15 @@ export const Detail = styled.div`
 
 export const LogoContainer = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 40px;
+    margin-left: 8px;
+  }
 `;
 
 export const LogoutIcon = styled(FiLogOut)`
@@ -59,6 +69,7 @@ export const LogoutContainer = styled.div`
   width: 32px;
   height: 32px;
   margin-left: 16px;
+  cursor: pointer;
 `;
 
 export const BooksContainer = styled.div`

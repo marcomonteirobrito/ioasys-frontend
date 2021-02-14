@@ -79,18 +79,29 @@ const Dashboard = () => {
     }
   }, []);
 
-  console.log(booksData);
+  const handleLogout = () => {
+    try {
+      localStorage.removeItem('token');
+      localStorage.removeItem('refresh-token');
+
+      history.push('/');
+    } catch (err) {
+      throw new Error(err);
+    }
+  };
+
   return (
     <Container>
       <DashboardHeader>
         <LogoContainer>
           <Logo />
+          <span>Books</span>
         </LogoContainer>
         <DashboardDetail>
           <Detail>
             Bem vindo, <strong>{userName}</strong>
           </Detail>
-          <LogoutContainer>
+          <LogoutContainer onClick={handleLogout}>
             <LogoutIcon />
           </LogoutContainer>
         </DashboardDetail>
