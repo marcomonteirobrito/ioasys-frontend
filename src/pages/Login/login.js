@@ -87,7 +87,6 @@ const Login = () => {
           type="text"
           onChange={(event) => setEmail(event.target.value)}
           value={email}
-          placeholder="teste"
           inputTitle="Email"
           button={false}
           loading={loading}
@@ -100,7 +99,6 @@ const Login = () => {
           type="password"
           onChange={(event) => setPassword(event.target.value)}
           value={password}
-          placeholder="teste"
           inputTitle="Senha"
           button
           buttonClick={handleLogin}
