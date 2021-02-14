@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { VscTriangleUp } from 'react-icons/vsc';
 
 import Colors from '../../commons/Colors';
 
@@ -17,10 +18,10 @@ export const ErrorMessageContainer = styled.div`
   font-weight: 700;
 `;
 
-export const ErrorArrow = styled.div`
-  background: ${Colors.backgroundErrorContainer};
+export const ErrorArrow = styled(VscTriangleUp)`
+  color: ${Colors.backgroundErrorContainer};
+  background: none;
   width: 16px;
   height: 16px;
-  margin: 16px 0px -8px 16px;
-  transform: rotate(45deg);
+  margin: 4px 0px -5.14px 16px;
 `;
