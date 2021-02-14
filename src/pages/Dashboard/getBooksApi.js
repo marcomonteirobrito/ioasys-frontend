@@ -1,18 +1,20 @@
 import connectionApi from '../../services/connectionApi';
 
-const getBooks = ({ token, refreshToken, page, amount, category }) => {
+const getBooks = async ({ responseToken, page, amount, category }) => {
   try {
-    return connectionApi.post('books', {
+    const response = await connectionApi.get('books', {
       headers: {
-        Authorization: token,
-        RefreshToken: refreshToken,
+        Authorization: responseToken.token,
+        'refresh-token': responseToken.refreshToken,
       },
-      body: {
+      params: {
         page,
         amount,
         category,
       },
     });
+
+    return response;
   } catch (err) {
     throw new Error(err);
   }

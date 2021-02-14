@@ -5,6 +5,7 @@ const Colors = {
   buttonLabelColor: '#B22E6F',
   backgroundErrorContainer: 'rgba(255, 255, 255, 0.4)',
   borderCirculeLogout: 'rgba(51, 51, 51, 0.2)',
+  loadingButtonlogin: '#B22E6F',
 };
 
 export default Colors;

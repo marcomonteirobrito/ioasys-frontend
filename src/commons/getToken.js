@@ -8,10 +8,7 @@ const getToken = async () => {
       refreshToken,
     };
   } catch (err) {
-    throw new Error({
-      error: 'Não foi possível encontrar o token e/ou refresh-token',
-      detail: err,
-    });
+    throw new Error(err);
   }
 };
 

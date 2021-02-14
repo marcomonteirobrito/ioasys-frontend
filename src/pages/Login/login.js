@@ -23,14 +23,15 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [authFailed, setAuthFailed] = useState(true);
   const [disabledButton, setDisabledButton] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const history = useHistory();
 
   useEffect(() => {
-    if (email.length === 0 && password.length === 0) {
-      setDisabledButton(true);
-    } else {
+    if (email && password) {
       setDisabledButton(false);
+    } else {
+      setDisabledButton(true);
     }
   }, [email, password]);
 
@@ -56,6 +57,7 @@ const Login = () => {
       const requestBody = { email, password };
       await validateLoginSchema(requestBody);
 
+      setLoading(true);
       const response = await getAuthLogin(requestBody);
       await saveTokenLocalStorage(response);
 
@@ -65,6 +67,8 @@ const Login = () => {
     } catch (err) {
       setAuthFailed(true);
       console.error(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -86,6 +90,7 @@ const Login = () => {
           placeholder="teste"
           inputTitle="Email"
           button={false}
+          loading={loading}
         />
 
         <Input
@@ -100,6 +105,7 @@ const Login = () => {
           button
           buttonClick={handleLogin}
           disabledButton={disabledButton}
+          loading={loading}
         />
 
         {authFailed && <ErrorMessage message="Email e/ou senha incorretos." />}
