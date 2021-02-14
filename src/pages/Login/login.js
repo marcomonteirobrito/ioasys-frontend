@@ -21,7 +21,7 @@ import { getAuthLogin } from '../../auth/authLoginApi';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [authFailed, setAuthFailed] = useState(true);
+  const [authFailed, setAuthFailed] = useState(false);
   const [disabledButton, setDisabledButton] = useState(false);
   const [loading, setLoading] = useState(false);
 

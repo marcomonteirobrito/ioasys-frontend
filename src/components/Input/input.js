@@ -45,6 +45,7 @@ const Input = ({
         onChange={onChange}
         value={value}
         placeholder={placeholder}
+        button={button}
       />
     </InputContainer>
 

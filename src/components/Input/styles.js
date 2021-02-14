@@ -6,6 +6,7 @@ export const InputField = styled.input`
   border: none;
   box-shadow: none;
   background: none;
+  width: ${(props) => !props.button && '330px'};
 
   color: ${Colors.white};
 
@@ -17,19 +18,18 @@ export const InputField = styled.input`
   }
 `;
 
-export const Label = styled.div`
+export const Label = styled.label`
   color: ${Colors.white};
   opacity: 0.5;
   size: 12px;
   line-height: 16px;
-  margin: 8px 0px 4px 16px;
+  margin-bottom: 4px;
 `;
 
 export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+  margin-right: 50px;
 `;
 
 export const Button = styled.button`
@@ -58,10 +58,4 @@ export const Container = styled.div`
   margin-bottom: 16px;
 
   background: ${Colors.black32};
-
-  &:hover {
-    ${InputField} {
-      display: flex;
-    }
-  }
 `;
