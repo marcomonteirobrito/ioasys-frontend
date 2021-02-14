@@ -73,8 +73,16 @@ export const LogoutContainer = styled.div`
 `;
 
 export const BooksContainer = styled.div`
-  width: 800px;
+  /* width: 1080px;
   height: 500px;
+  background: yellow; */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 15px;
+  grid-template-rows: auto;
+  row-gap: 10px;
+  margin-top: 12px;
+  width: 1080px;
 `;
 
 export const PageContainer = styled.div``;
