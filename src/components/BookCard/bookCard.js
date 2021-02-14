@@ -3,35 +3,50 @@ import PropTypes from 'prop-types';
 
 import {
   Container,
-  ImageContainer,
+  BookContainer,
+  BookDetail,
   BookImage,
-  DetailContainer,
-  DetailHeader,
-  Title,
-  Authors,
-  DetailBody,
-  DetailSpan,
+  BookTitle,
+  BookAuthor,
+  BookInformations,
+  BookSpan,
 } from './styles';
 
 const BookCard = ({ booksData, idBookCard }) => (
-  <Container id={idBookCard}>
-    <ImageContainer>
-      <BookImage src={booksData.imageURL} />
-    </ImageContainer>
-    <DetailContainer>
-      <DetailHeader>
-        <Title>{booksData.title}</Title>
-        {booksData.authors?.map((author) => (
-          <Authors>{author}</Authors>
-        ))}
-      </DetailHeader>
+  // <Container id={idBookCard}>
+  //   <ImageContainer>
+  //     <BookImage image={booksData.imageUrl} />
+  //   </ImageContainer>
+  //   <DetailContainer>
+  //     <DetailHeader>
+  //       <Title>{booksData.title}</Title>
+  //       {booksData.authors?.map((author) => (
+  //         <Authors>{author}</Authors>
+  //       ))}
+  //     </DetailHeader>
 
-      <DetailBody>
-        <DetailSpan>{booksData.pageCount}</DetailSpan>
-        <DetailSpan>{booksData.publisher}</DetailSpan>
-        <DetailSpan>{booksData.published}</DetailSpan>
-      </DetailBody>
-    </DetailContainer>
+  //     <DetailBody>
+  //       <DetailSpan>{booksData.pageCount}</DetailSpan>
+  //       <DetailSpan>{booksData.publisher}</DetailSpan>
+  //       <DetailSpan>{booksData.published}</DetailSpan>
+  //     </DetailBody>
+  //   </DetailContainer>
+  // </Container>
+
+  <Container id={idBookCard}>
+    <BookContainer>
+      <BookImage>teste</BookImage>
+      <BookDetail>
+        <BookTitle>{booksData.title}</BookTitle>
+        <BookAuthor>{booksData.authors[0]}</BookAuthor>
+
+        <BookInformations>
+          <BookSpan>{booksData.pageCount}</BookSpan>
+          <BookSpan>{booksData.publisher}</BookSpan>
+          <BookSpan>{booksData.published}</BookSpan>
+        </BookInformations>
+      </BookDetail>
+    </BookContainer>
   </Container>
 );
 
