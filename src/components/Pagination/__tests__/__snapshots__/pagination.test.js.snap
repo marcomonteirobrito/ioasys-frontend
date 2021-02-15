@@ -1,10 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button Deve renderizar o componente corretamente 1`] = `
+exports[`Pagination Deve renderizar o componente corretamente 1`] = `
 <body>
   <div>
     <div
-      class="sc-bdfBwQ enbGoq"
+      class="sc-bdfBwQ enbGoq pagination-container"
+      id="pagination"
     >
       <span
         class="sc-gsTCUz"

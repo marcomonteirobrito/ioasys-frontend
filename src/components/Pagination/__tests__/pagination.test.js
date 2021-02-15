@@ -21,7 +21,7 @@ const onClickButtonRight = jest.fn();
 const disableButtonLeft = false;
 const disableButtonRight = false;
 
-describe('Button', () => {
+describe('Pagination', () => {
   it('Deve renderizar o componente corretamente', () => {
     renderPagination();
 

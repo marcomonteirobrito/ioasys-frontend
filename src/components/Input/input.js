@@ -50,7 +50,12 @@ const Input = ({
     </InputContainer>
 
     {button && (
-      <Button onClick={buttonClick} loading={loading} disabled={disabledButton}>
+      <Button
+        data-testid="button"
+        onClick={buttonClick}
+        loading={loading}
+        disabled={disabledButton}
+      >
         Entrar
       </Button>
     )}

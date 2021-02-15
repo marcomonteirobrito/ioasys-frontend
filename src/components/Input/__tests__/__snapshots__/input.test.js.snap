@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input Deve renderizar o componente corretamente 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-jSgupP jdcqbq input-container"
+    >
+      <div
+        class="sc-hKgILt eoXUuG"
+      >
+        <label
+          class="sc-dlfnbm dyjhlw"
+        >
+          Email
+        </label>
+        <input
+          class="sc-gsTCUz dhFEmg input-container"
+          id="input"
+          name="input"
+          placeholder="Insira seu email"
+          type="text"
+          value="marco_monteiro@live.com"
+        />
+      </div>
+    </div>
+  </div>
+</body>
+`;

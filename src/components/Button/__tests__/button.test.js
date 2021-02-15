@@ -6,7 +6,11 @@ import Button from '../button';
 
 const renderButton = () => {
   const onButtonClick = jest.fn();
-  return render(<Button onClick={onButtonClick}>Entrar</Button>);
+  return render(
+    <Button onClick={onButtonClick} loading={false}>
+      Entrar
+    </Button>
+  );
 };
 
 describe('Button', () => {
@@ -32,5 +36,31 @@ describe('Button', () => {
     fireEvent.click(children);
 
     expect(onButtonClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('Deve habilitar o loading', () => {
+    const onButtonClick = jest.fn();
+    render(
+      <Button onClick={onButtonClick} loading>
+        Entrar
+      </Button>
+    );
+
+    const loading = screen.queryByRole('progressbar');
+
+    expect(loading).toBeDefined();
+  });
+
+  it('NÃO deve habilitar o loading', () => {
+    const onButtonClick = jest.fn();
+    render(
+      <Button onClick={onButtonClick} loading={false}>
+        Entrar
+      </Button>
+    );
+
+    const loading = screen.queryByRole('progressbar');
+
+    expect(loading).toBeNull();
   });
 });
