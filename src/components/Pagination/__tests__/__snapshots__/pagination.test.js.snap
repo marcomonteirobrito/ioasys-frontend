@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Deve renderizar o componente corretamente 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-bdfBwQ enbGoq"
+    >
+      <span
+        class="sc-gsTCUz"
+      >
+        Página 
+        <strong>
+          2
+        </strong>
+         de 
+        <strong>
+          10
+        </strong>
+      </span>
+      <div
+        class="sc-dlfnbm dvbuTo"
+        data-testid="button-left"
+      >
+        <svg
+          class="sc-hKgILt jCnWdz"
+          fill="none"
+          height="1em"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <polyline
+            points="15 18 9 12 15 6"
+          />
+        </svg>
+      </div>
+      <div
+        class="sc-dlfnbm dvbuTo"
+        data-testid="button-right"
+      >
+        <svg
+          class="sc-eCssSg kmNnxw"
+          fill="none"
+          height="1em"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <polyline
+            points="9 18 15 12 9 6"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</body>
+`;

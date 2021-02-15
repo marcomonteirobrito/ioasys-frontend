@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Deve renderizar o componente corretamente 1`] = `
+<body>
+  <div>
+    <button
+      class="sc-bdfBwQ ljibip button-container"
+      type="button"
+    >
+      Entrar
+    </button>
+  </div>
+</body>
+`;
