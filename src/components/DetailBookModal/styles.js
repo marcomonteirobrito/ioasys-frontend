@@ -72,5 +72,6 @@ export const DescriptionContainer = styled.div`
 export const Description = styled.div`
   width: 330px;
   margin-left: 4px;
+  color: ${Colors.detailBook};
 `;
 export const QuotesIcon = styled(ImQuotesLeft)``;

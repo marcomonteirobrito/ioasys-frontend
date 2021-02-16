@@ -31,7 +31,7 @@ const Dashboard = () => {
   const [disableButtonRight, setDisabledButtonRight] = useState(false);
   const [page, setPage] = useState(1);
   const [pageLength, setPageLenght] = useState(10);
-  const [detailBookModal, setDetailBookModal] = useState(true);
+  const [detailBookModalVisible, setDetailBookModalVisible] = useState(true);
 
   const history = useHistory();
 
@@ -309,7 +309,11 @@ const Dashboard = () => {
       </DashboardHeader>
       <BooksContainer>
         {data.map((book) => (
-          <BookCard bookData={book} key={book.id} />
+          <BookCard
+            bookData={book}
+            key={book.id}
+            onClick={() => setDetailBookModalVisible(true)}
+          />
         ))}
       </BooksContainer>
 
@@ -323,8 +327,8 @@ const Dashboard = () => {
       />
 
       <DetailBookModal
-        visible={detailBookModal}
-        onClose={() => setDetailBookModal(false)}
+        visible={detailBookModalVisible}
+        onClose={() => setDetailBookModalVisible(false)}
       />
     </Container>
   );

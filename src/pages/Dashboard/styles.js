@@ -21,9 +21,12 @@ export const DashboardHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 1080px;
+  width: 1200px;
   height: 42px;
   margin-bottom: 16px;
+  @media (min-width: 1600px) {
+    width: 1400px;
+  }
 `;
 
 export const Logo = styled.div`
@@ -79,7 +82,9 @@ export const BooksContainer = styled.div`
   grid-template-rows: auto;
   row-gap: 10px;
   margin-top: 12px;
-  width: 1080px;
-`;
+  width: 1200px;
 
-export const PageContainer = styled.div``;
+  @media (min-width: 1600px) {
+    width: 1400px;
+  }
+`;

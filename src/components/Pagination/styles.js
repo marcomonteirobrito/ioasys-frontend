@@ -2,11 +2,22 @@ import styled from 'styled-components';
 
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 
+export const PaginateContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 1175px;
+  margin-top: 16px;
+
+  @media (min-width: 1600px) {
+    width: 1400px;
+  }
+`;
+
 export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 24px 0px 0px 1000px;
 `;
 export const Pages = styled.span``;
 

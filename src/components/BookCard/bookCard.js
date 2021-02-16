@@ -12,10 +12,22 @@ import {
   BookSpan,
 } from './styles';
 
-const BookCard = ({ bookData, idBookCard }) => (
-  <Container id={idBookCard} data-testid="bookContainer">
+/**
+ * @param {string} className - ClassName do elemento
+ * @param {function} onClick - Função a ser chamada no evento de click
+ * @param {string} id - Identificador único do componente
+ * @param {object} bookData - Informações do livro
+ */
+
+const BookCard = ({ bookData, onClick, className, id }) => (
+  <Container
+    data-testid="bookContainer"
+    onClick={onClick}
+    className={className}
+    id={id}
+  >
     <BookContainer>
-      <BookImage>teste</BookImage>
+      <BookImage>{bookData.imageUrl}</BookImage>
       <BookDetail>
         <BookTitle>{bookData.title}</BookTitle>
         {bookData.authors.map((author) => (
@@ -34,11 +46,14 @@ const BookCard = ({ bookData, idBookCard }) => (
 
 BookCard.propTypes = {
   bookData: PropTypes.objectOf(PropTypes.object).isRequired,
-  idBookCard: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
+  className: PropTypes.string,
+  id: PropTypes.string,
 };
 
 BookCard.defaultProps = {
-  idBookCard: 'book-card',
+  className: 'book-card',
+  id: 'book-card',
 };
 
 export default BookCard;

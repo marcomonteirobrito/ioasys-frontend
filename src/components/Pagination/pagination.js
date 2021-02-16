@@ -1,7 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Container, Pages, Button, ButtonLeft, ButtonRight } from './styles';
+import {
+  Container,
+  Pages,
+  Button,
+  ButtonLeft,
+  ButtonRight,
+  PaginateContainer,
+} from './styles';
 
 /**
  * @param {string} id - Identificação unica do elemento
@@ -24,19 +31,21 @@ const Pagination = ({
   disableButtonLeft,
   disableButtonRight,
 }) => (
-  <Container id={id} className={className}>
-    <Pages>
-      Página <strong>{page}</strong> de <strong>{pageLength}</strong>
-    </Pages>
+  <PaginateContainer>
+    <Container id={id} className={className}>
+      <Pages>
+        Página <strong>{page}</strong> de <strong>{pageLength}</strong>
+      </Pages>
 
-    <Button data-testid="button-left" onClick={onClickButtonLeft}>
-      <ButtonLeft disableButtonLeft={disableButtonLeft} />
-    </Button>
+      <Button data-testid="button-left" onClick={onClickButtonLeft}>
+        <ButtonLeft disableButtonLeft={disableButtonLeft} />
+      </Button>
 
-    <Button data-testid="button-right" onClick={onClickButtonRight}>
-      <ButtonRight disableButtonRight={disableButtonRight} />
-    </Button>
-  </Container>
+      <Button data-testid="button-right" onClick={onClickButtonRight}>
+        <ButtonRight disableButtonRight={disableButtonRight} />
+      </Button>
+    </Container>
+  </PaginateContainer>
 );
 
 Pagination.propTypes = {
