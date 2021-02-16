@@ -25,7 +25,7 @@ import {
  * @param {function} onClose - Função a ser chamada quando clicar no botão de fechar o modal
  */
 
-const DetailBookModal = ({ visible, onClose }) => (
+const DetailBookModal = ({ visible, onClose, bookData }) => (
   <Modal visible={visible} onClose={onClose}>
     <Container>
       <ImageBookContainer>{bookData.imageUrl}</ImageBookContainer>
@@ -87,6 +87,7 @@ const DetailBookModal = ({ visible, onClose }) => (
 DetailBookModal.propTypes = {
   visible: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
+  bookData: PropTypes.objectOf(PropTypes.object).isRequired,
 };
 
 export default DetailBookModal;
