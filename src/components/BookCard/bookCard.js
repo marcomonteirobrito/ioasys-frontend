@@ -12,38 +12,20 @@ import {
   BookSpan,
 } from './styles';
 
-const BookCard = ({ booksData, idBookCard }) => (
-  // <Container id={idBookCard}>
-  //   <ImageContainer>
-  //     <BookImage image={booksData.imageUrl} />
-  //   </ImageContainer>
-  //   <DetailContainer>
-  //     <DetailHeader>
-  //       <Title>{booksData.title}</Title>
-  //       {booksData.authors?.map((author) => (
-  //         <Authors>{author}</Authors>
-  //       ))}
-  //     </DetailHeader>
-
-  //     <DetailBody>
-  //       <DetailSpan>{booksData.pageCount}</DetailSpan>
-  //       <DetailSpan>{booksData.publisher}</DetailSpan>
-  //       <DetailSpan>{booksData.published}</DetailSpan>
-  //     </DetailBody>
-  //   </DetailContainer>
-  // </Container>
-
-  <Container id={idBookCard}>
+const BookCard = ({ bookData, idBookCard }) => (
+  <Container id={idBookCard} data-testid="bookContainer">
     <BookContainer>
       <BookImage>teste</BookImage>
       <BookDetail>
-        <BookTitle>{booksData.title}</BookTitle>
-        <BookAuthor>{booksData.authors[0]}</BookAuthor>
+        <BookTitle>{bookData.title}</BookTitle>
+        {bookData.authors.map((author) => (
+          <BookAuthor>{author}</BookAuthor>
+        ))}
 
         <BookInformations>
-          <BookSpan>{booksData.pageCount}</BookSpan>
-          <BookSpan>{booksData.publisher}</BookSpan>
-          <BookSpan>{booksData.published}</BookSpan>
+          <BookSpan>{bookData.pageCount} páginas</BookSpan>
+          <BookSpan>{bookData.publisher}</BookSpan>
+          <BookSpan>Publicado em {bookData.published}</BookSpan>
         </BookInformations>
       </BookDetail>
     </BookContainer>
@@ -51,7 +33,7 @@ const BookCard = ({ booksData, idBookCard }) => (
 );
 
 BookCard.propTypes = {
-  booksData: PropTypes.objectOf(PropTypes.object).isRequired,
+  bookData: PropTypes.objectOf(PropTypes.object).isRequired,
   idBookCard: PropTypes.string,
 };
 
