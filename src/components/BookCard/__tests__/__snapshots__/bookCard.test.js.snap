@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input Deve renderizar o componente corretamente 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-bdfBwQ dIRzjT"
+      data-testid="bookContainer"
+      id="book-card"
+    >
+      <div
+        class="sc-gsTCUz iKaSyU"
+      >
+        <div
+          class="sc-dlfnbm kumDvM"
+        >
+          teste
+        </div>
+        <div
+          class="sc-hKgILt eqSQca"
+        >
+          <span
+            class="sc-eCssSg jVTndr"
+          />
+          <span
+            class="sc-jSgupP kqTHcr"
+          />
+          <div
+            class="sc-gKsewC egdnxP"
+          >
+            <span
+              class="sc-iBPRYJ dPYJaO"
+            />
+            <span
+              class="sc-iBPRYJ dPYJaO"
+            />
+            <span
+              class="sc-iBPRYJ dPYJaO"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;

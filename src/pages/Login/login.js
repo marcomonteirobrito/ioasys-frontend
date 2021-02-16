@@ -48,7 +48,7 @@ const Login = () => {
       localStorage.setItem('token', response.headers.authorization);
       localStorage.setItem('refresh-token', response.headers['refresh-token']);
     } catch (err) {
-      throw new Error({ error: 'Erro ao salvar token', detail: err });
+      throw new Error(err);
     }
   };
 
