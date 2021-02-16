@@ -33,7 +33,7 @@ export const BookDetail = styled.div`
   flex-direction: column;
 
   width: 143px;
-  max-height: 122px;
+  height: 122px;
   margin-left: 16px;
 `;
 export const BookTitle = styled.span`
@@ -45,16 +45,19 @@ export const BookTitle = styled.span`
 export const BookAuthor = styled.span`
   color: ${Colors.authorBookDetail};
   width: 127px;
-  height: 20px;
+  height: 16px;
+  display: flex;
+  flex-direction: column;
 `;
 export const BookInformations = styled.div`
   height: 60px;
-  width: 104px;
+  width: 120px;
   display: flex;
   flex-direction: column;
-  margin-top: 28px;
+  margin-top: 12px;
 `;
 export const BookSpan = styled.span`
   color: ${Colors.detailBook};
 `;
+
 export const DetailSpan = styled.span``;
