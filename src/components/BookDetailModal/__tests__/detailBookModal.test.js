@@ -2,21 +2,21 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import DetailBookModal from '../detailBookModal';
+import BookDetailModal from '../BookDetailModal';
 
-const renderDetailBookModal = () => {
+const renderBookDetailModal = () => {
   const onButtonClick = jest.fn();
 
   return render(
-    <DetailBookModal onClose={onButtonClick} visible={false}>
+    <BookDetailModal onClose={onButtonClick} visible={false}>
       Entrar
-    </DetailBookModal>
+    </BookDetailModal>
   );
 };
 
-describe('DetailBookModal', () => {
+describe('BookDetailModal', () => {
   it('Deve renderizar o componente corretamente', () => {
-    renderDetailBookModal();
+    renderBookDetailModal();
 
     expect(document.body).toMatchSnapshot();
   });

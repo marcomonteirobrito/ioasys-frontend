@@ -2,7 +2,7 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import Button from '../button';
+import Button from '../Button';
 
 const renderButton = () => {
   const onButtonClick = jest.fn();

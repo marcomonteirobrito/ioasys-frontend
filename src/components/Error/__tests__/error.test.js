@@ -2,7 +2,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import Error from '../error';
+import Error from '../Error';
 
 const renderError = () =>
   render(

@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
-import BookCard from '../bookCard';
+import BookCard from '../BookCard';
 
 const bookDataMock = [
   {

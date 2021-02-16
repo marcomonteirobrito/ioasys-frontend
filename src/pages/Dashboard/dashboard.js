@@ -6,9 +6,9 @@ import getRefreshToken from '../../auth/authRefreshToken';
 import getTokenApi from '../../commons/getToken';
 import getBooksApi from './getBooksApi';
 
-import BookCard from '../../components/BookCard/bookCard';
-import Pagination from '../../components/Pagination/pagination';
-import DetailBookModal from '../../components/DetailBookModal/detailBookModal';
+import BookCard from '../../components/BookCard/BookCard';
+import Pagination from '../../components/Pagination/Pagination';
+import BookDetailModal from '../../components/BookDetailModal/BookDetailModal';
 
 import {
   Container,
@@ -24,14 +24,14 @@ import {
 
 const Dashboard = () => {
   // eslint-disable-next-line no-unused-vars
-  const [userName, setUserName] = useState('Mudar nome');
+  const [user, setUser] = useState('');
   // eslint-disable-next-line no-unused-vars
   const [booksData, setBooksData] = useState([]);
   const [disableButtonLeft, setDisabledButtonLeft] = useState(false);
   const [disableButtonRight, setDisabledButtonRight] = useState(false);
   const [page, setPage] = useState(1);
   const [pageLength, setPageLenght] = useState(10);
-  const [detailBookModalVisible, setDetailBookModalVisible] = useState(true);
+  const [bookDetailModalVisible, setBookDetailModalVisible] = useState(true);
 
   const history = useHistory();
 
@@ -76,10 +76,15 @@ const Dashboard = () => {
     }
   };
 
+  const getUser = async () => {
+    setUser(localStorage.getItem('user'));
+  };
+
   useEffect(async () => {
     try {
       const responseToken = await getToken();
       await getBooks(responseToken);
+      await getUser();
     } catch (err) {
       console.error(err);
     }
@@ -300,7 +305,7 @@ const Dashboard = () => {
         </LogoContainer>
         <DashboardDetail>
           <Detail>
-            Bem vindo, <strong>{userName}</strong>
+            Bem vindo, <strong>{user.name}</strong>
           </Detail>
           <LogoutContainer onClick={handleLogout}>
             <LogoutIcon />
@@ -312,7 +317,7 @@ const Dashboard = () => {
           <BookCard
             bookData={book}
             key={book.id}
-            onClick={() => setDetailBookModalVisible(true)}
+            onClick={() => setBookDetailModalVisible(true)}
           />
         ))}
       </BooksContainer>
@@ -326,9 +331,9 @@ const Dashboard = () => {
         disableButtonRight={disableButtonRight}
       />
 
-      <DetailBookModal
-        visible={detailBookModalVisible}
-        onClose={() => setDetailBookModalVisible(false)}
+      <BookDetailModal
+        visible={bookDetailModalVisible}
+        onClose={() => setBookDetailModalVisible(false)}
       />
     </Container>
   );

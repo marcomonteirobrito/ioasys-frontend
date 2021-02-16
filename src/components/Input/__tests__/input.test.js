@@ -2,7 +2,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import Input from '../input';
+import Input from '../Input';
 
 const renderInput = () =>
   render(

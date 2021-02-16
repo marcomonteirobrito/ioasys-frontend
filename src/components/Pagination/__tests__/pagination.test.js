@@ -2,7 +2,7 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import Pagination from '../pagination';
+import Pagination from '../Pagination';
 
 const renderPagination = () =>
   render(

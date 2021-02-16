@@ -3,10 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import loginSchemaValidate from '../../commons/loginSchema';
+import loginSchemaValidate from '../../commons/loginSchemaValidate';
 
-import Input from '../../components/Input/input';
-import ErrorMessage from '../../components/Error/error';
+import Input from '../../components/Input/Input';
+import ErrorMessage from '../../components/Error/Error';
 
 import {
   Container,
@@ -47,10 +47,17 @@ const Login = () => {
     try {
       localStorage.setItem('token', response.headers.authorization);
       localStorage.setItem('refresh-token', response.headers['refresh-token']);
+      
+      saveUserLocalStorage(response)
+
     } catch (err) {
       throw new Error(err);
     }
   };
+
+  const saveUserLocalStorage = (userDTO) {
+    localStorage.setItem('user', userDTO)
+  }
 
   const handleLogin = async () => {
     try {
