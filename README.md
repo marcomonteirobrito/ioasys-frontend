@@ -29,14 +29,20 @@
 ### Instalando aplicação
 
 Execute o comando `npm install` na raiz do projeto para instalar as dependências.
-<img align="center" alt="npminstall" src="readme/npmInstall.PNG">
 
 Após executado o código acima, execute o comando `npm start` .
-<img align="center" alt="npmstart" src="readme/npmStart.PNG">
 
 > Obs: Será aberto na porta 3000
+> <br>
 > Obs: Dados de login: usuario: desafio@ioasys.com.br senha: 12341234
 
+### O que foi desenvolvido
+
+<p> Login e acesso de Usuário já registrado </p>
+<p> Para o login usamos padrões OAuth 2.0. Na resposta de sucesso do login a api retornará 3 custom headers (access-token, client, uid) </p>
+<p> Para ter acesso as demais APIs precisamos enviar o 'authorization' no header para autorizar a requisição </p>
+<p> Listagem de Livros</p>
+<p> Detalhamento do Livro </p>
 ### Pontos para Melhorar
 
 <p>Estilização do card de livros</p>
