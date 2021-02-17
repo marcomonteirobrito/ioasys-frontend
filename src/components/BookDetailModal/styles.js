@@ -27,19 +27,16 @@ export const DetailBookContainer = styled.div`
   height: 512px;
   margin-right: 32px;
 `;
-export const BookTitle = styled.h1`
-  size: 28px;
-  line-height: 40px;
-  overflow: hidden;
+export const BookTitle = styled.div`
+  font-size: 28px;
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 349px;
 `;
 export const BookAuthors = styled.span`
   color: ${Colors.authorBookDetail};
-  size: 12px;
+  size: 8px;
   line-height: 20px;
-  margin-top: 4px;
 `;
 
 export const SubTitle = styled.h5``;
@@ -60,22 +57,25 @@ export const InformationsSpan = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
+
 export const Title = styled.div`
   font-size: 12px;
-  line-height: 28px;
 `;
 export const Result = styled.div`
   color: ${Colors.detailBook};
   font-size: 12px;
-  line-height: 28px;
+  line-height: 20px;
 `;
+
 export const DescriptionContainer = styled.div`
   display: flex;
   margin-top: 8px;
+  margin-bottom: 10px;
 `;
 export const Description = styled.div`
   width: 330px;
   margin-left: 4px;
   color: ${Colors.detailBook};
 `;
+
 export const QuotesIcon = styled(ImQuotesLeft)``;

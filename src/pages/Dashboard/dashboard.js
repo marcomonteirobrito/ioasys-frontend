@@ -123,15 +123,26 @@ const Dashboard = () => {
     }
   };
 
-  const handleBookSelected = (bookId) => {
-    const bookSelectedFilter = booksData.filter((book) => book.id === bookId);
-
+  const getBookDetail = (bookId) => {
+    const bookSelectedFilter = booksData.find((book) => book.id === bookId);
     setBookSelected(bookSelectedFilter);
+  };
+
+  const handleBookSelected = (bookId) => {
+    getBookDetail(bookId);
     setBookDetailModalVisible(true);
   };
 
   return (
     <Container>
+      {bookDetailModalVisible && (
+        <BookDetailModal
+          visible={bookDetailModalVisible}
+          onClose={() => setBookDetailModalVisible(false)}
+          bookData={bookSelected}
+        />
+      )}
+
       <DashboardHeader>
         <LogoContainer>
           <Logo />
@@ -163,12 +174,6 @@ const Dashboard = () => {
         onClickButtonRight={onClickButtonRight}
         disableButtonLeft={disableButtonLeft}
         disableButtonRight={disableButtonRight}
-      />
-
-      <BookDetailModal
-        visible={bookDetailModalVisible}
-        onClose={() => setBookDetailModalVisible(false)}
-        bookData={bookSelected}
       />
     </Container>
   );
