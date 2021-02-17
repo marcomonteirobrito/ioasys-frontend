@@ -1,10 +1,9 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import getRefreshToken from '../../auth/authRefreshToken';
 import getTokenApi from '../../commons/getToken';
-import getBooksApi from './getBooksApi';
+import { getBooksApi } from '../../commons/getBooksApi';
 
 import BookCard from '../../components/BookCard/BookCard';
 import Pagination from '../../components/Pagination/Pagination';
@@ -23,15 +22,16 @@ import {
 } from './styles';
 
 const Dashboard = () => {
-  // eslint-disable-next-line no-unused-vars
   const [user, setUser] = useState('');
   // eslint-disable-next-line no-unused-vars
   const [booksData, setBooksData] = useState([]);
   const [disableButtonLeft, setDisabledButtonLeft] = useState(false);
   const [disableButtonRight, setDisabledButtonRight] = useState(false);
   const [page, setPage] = useState(1);
+  // eslint-disable-next-line no-unused-vars
   const [pageLength, setPageLenght] = useState(10);
-  const [bookDetailModalVisible, setBookDetailModalVisible] = useState(true);
+  const [bookDetailModalVisible, setBookDetailModalVisible] = useState(false);
+  const [bookSelected, setBookSelected] = useState({});
 
   const history = useHistory();
 
@@ -48,12 +48,12 @@ const Dashboard = () => {
     try {
       const responseBooks = await getBooksApi({
         responseToken,
-        page: '1',
-        amount: '25',
+        page: `${page}`,
+        amount: '12',
         category: 'biographies',
       });
 
-      setBooksData(responseBooks);
+      setBooksData(responseBooks.data.data);
     } catch (err) {
       if (err.message === 'Error: Request failed with status code 401') {
         const newToken = await notAuthorized(responseToken);
@@ -81,14 +81,15 @@ const Dashboard = () => {
   };
 
   useEffect(async () => {
-    try {
-      const responseToken = await getToken();
-      await getBooks(responseToken);
-      await getUser();
-    } catch (err) {
-      console.error(err);
-    }
+    const responseToken = await getToken();
+    await getBooks(responseToken);
+    getUser();
   }, []);
+
+  useEffect(async () => {
+    const responseToken = await getToken();
+    await getBooks(responseToken);
+  }, [page]);
 
   const handleLogout = () => {
     try {
@@ -100,6 +101,15 @@ const Dashboard = () => {
       throw new Error(err);
     }
   };
+
+  useEffect(() => {
+    // eslint-disable-next-line no-unused-expressions
+    page === 1 ? setDisabledButtonLeft(true) : setDisabledButtonLeft(false);
+    // eslint-disable-next-line no-unused-expressions
+    page === pageLength
+      ? setDisabledButtonRight(true)
+      : setDisabledButtonRight(false);
+  }, [page]);
 
   const onClickButtonLeft = () => {
     if (page - 1 > 0) {
@@ -113,188 +123,12 @@ const Dashboard = () => {
     }
   };
 
-  const data = [
-    {
-      authors: ['Frederico Silva', 'Márcia Xavier'],
-      title: 'Aspernatura',
-      description:
-        'Repellat velit neque delectus mollitia. Et eos nostrum id blanditiis odio sed. Dolorem atque sit tempora et excepturi sint suscipit at.\n \rAb voluptatum possimus. Culpa laborum consequuntur sit molestiae repellendus eos distinctio. Asperiores quia consectetur perspiciatis nobis et exercitationem hic distinctio.',
-      pageCount: 810,
-      category: 'Biografias',
-      imageUrl: 'https://files-books.ioasys.com.br/Book-10.jpg',
-      language: 'Inglês',
-      isbn10: '9007883404',
-      isbn13: '984-9007883404',
-      publisher: 'Oliveira, Martins and Pereira',
-      published: 2016,
-      id: '60171639faf5de22b804a076',
-    },
-    {
-      authors: ['Raul Pereira', 'Júlia Pereira Filho', 'Natália Barros Jr.'],
-      title: 'Assumenda',
-      description:
-        'Est cupiditate rerum sed nisi quam dolorem vel qui veniam. Veritatis quam expedita. Dolor unde animi est dolor unde qui nisi. Iusto in saepe repellendus officia omnis aut reiciendis sapiente. Voluptate et at ut. Velit est iure repellat doloribus omnis earum laborum.\n \rModi sapiente laudantium similique recusandae modi eveniet minima sint in. Eum autem nihil est enim a nostrum quaerat magnam. Et tempora iure quidem aliquid rerum accusamus id.',
-      pageCount: 990,
-      category: 'Biografias',
-      imageUrl: 'https://files-books.ioasys.com.br/Book-0.jpg',
-      language: 'Inglês',
-      isbn10: '6163701883',
-      isbn13: '951-6163701883',
-      publisher: 'Barros - Xavier',
-      published: 2003,
-      id: '60171639faf5de22b804a06e',
-    },
-    {
-      authors: ['Lorraine Barros', 'Sra. Ofélia Silva', 'Warley Pereira'],
-      title: 'Aut',
-      description:
-        'Qui omnis est commodi consectetur est. Odio ullam id ipsam suscipit numquam iusto iste consectetur. Sed ut est. Qui repellat corrupti veritatis consequatur quos ipsa.\n \rAtque dignissimos et eligendi numquam placeat ex. Consectetur sed aut autem ea id suscipit nihil a. Sunt repellendus suscipit reiciendis quidem sequi aut optio placeat quia. Quidem excepturi vel voluptate nisi molestiae soluta. Et nam et impedit illo accusamus sed earum est recusandae. Et delectus repellat enim distinctio velit et.',
-      pageCount: 965,
-      category: 'Biografias',
-      imageUrl: 'https://files-books.ioasys.com.br/Book-5.jpg',
-      language: 'Português',
-      isbn10: '3355205900',
-      isbn13: '112-3355205900',
-      publisher: 'Martins - Xavier',
-      published: 2019,
-      id: '60171639faf5de22b804a16c',
-    },
-    {
-      authors: ['Lorraine Barros', 'Sra. Ofélia Silva', 'Warley Pereira'],
-      title: 'Aut',
-      description:
-        'Qui omnis est commodi consectetur est. Odio ullam id ipsam suscipit numquam iusto iste consectetur. Sed ut est. Qui repellat corrupti veritatis consequatur quos ipsa.\n \rAtque dignissimos et eligendi numquam placeat ex. Consectetur sed aut autem ea id suscipit nihil a. Sunt repellendus suscipit reiciendis quidem sequi aut optio placeat quia. Quidem excepturi vel voluptate nisi molestiae soluta. Et nam et impedit illo accusamus sed earum est recusandae. Et delectus repellat enim distinctio velit et.',
-      pageCount: 965,
-      category: 'Biografias',
-      imageUrl: 'https://files-books.ioasys.com.br/Book-5.jpg',
-      language: 'Português',
-      isbn10: '3355205900',
-      isbn13: '112-3355205900',
-      publisher: 'Martins - Xavier',
-      published: 2019,
-      id: '60171639faf5de22b804a16c',
-    },
-    {
-      authors: ['Frederico Silva', 'Márcia Xavier'],
-      title: 'Aspernatura',
-      description:
-        'Repellat velit neque delectus mollitia. Et eos nostrum id blanditiis odio sed. Dolorem atque sit tempora et excepturi sint suscipit at.\n \rAb voluptatum possimus. Culpa laborum consequuntur sit molestiae repellendus eos distinctio. Asperiores quia consectetur perspiciatis nobis et exercitationem hic distinctio.',
-      pageCount: 810,
-      category: 'Biografias',
-      imageUrl: 'https://files-books.ioasys.com.br/Book-10.jpg',
-      language: 'Inglês',
-      isbn10: '9007883404',
-      isbn13: '984-9007883404',
-      publisher: 'Oliveira, Martins and Pereira',
-      published: 2016,
-      id: '60171639faf5de22b804a076',
-    },
-    {
-      authors: ['Raul Pereira', 'Júlia Pereira Filho', 'Natália Barros Jr.'],
-      title: 'Assumenda',
-      description:
-        'Est cupiditate rerum sed nisi quam dolorem vel qui veniam. Veritatis quam expedita. Dolor unde animi est dolor unde qui nisi. Iusto in saepe repellendus officia omnis aut reiciendis sapiente. Voluptate et at ut. Velit est iure repellat doloribus omnis earum laborum.\n \rModi sapiente laudantium similique recusandae modi eveniet minima sint in. Eum autem nihil est enim a nostrum quaerat magnam. Et tempora iure quidem aliquid rerum accusamus id.',
-      pageCount: 990,
-      category: 'Biografias',
-      imageUrl: 'https://files-books.ioasys.com.br/Book-0.jpg',
-      language: 'Inglês',
-      isbn10: '6163701883',
-      isbn13: '951-6163701883',
-      publisher: 'Barros - Xavier',
-      published: 2003,
-      id: '60171639faf5de22b804a06e',
-    },
-    {
-      authors: ['Lorraine Barros', 'Sra. Ofélia Silva', 'Warley Pereira'],
-      title: 'Aut',
-      description:
-        'Qui omnis est commodi consectetur est. Odio ullam id ipsam suscipit numquam iusto iste consectetur. Sed ut est. Qui repellat corrupti veritatis consequatur quos ipsa.\n \rAtque dignissimos et eligendi numquam placeat ex. Consectetur sed aut autem ea id suscipit nihil a. Sunt repellendus suscipit reiciendis quidem sequi aut optio placeat quia. Quidem excepturi vel voluptate nisi molestiae soluta. Et nam et impedit illo accusamus sed earum est recusandae. Et delectus repellat enim distinctio velit et.',
-      pageCount: 965,
-      category: 'Biografias',
-      imageUrl: 'https://files-books.ioasys.com.br/Book-5.jpg',
-      language: 'Português',
-      isbn10: '3355205900',
-      isbn13: '112-3355205900',
-      publisher: 'Martins - Xavier',
-      published: 2019,
-      id: '60171639faf5de22b804a16c',
-    },
-    {
-      authors: ['Lorraine Barros', 'Sra. Ofélia Silva', 'Warley Pereira'],
-      title: 'Aut',
-      description:
-        'Qui omnis est commodi consectetur est. Odio ullam id ipsam suscipit numquam iusto iste consectetur. Sed ut est. Qui repellat corrupti veritatis consequatur quos ipsa.\n \rAtque dignissimos et eligendi numquam placeat ex. Consectetur sed aut autem ea id suscipit nihil a. Sunt repellendus suscipit reiciendis quidem sequi aut optio placeat quia. Quidem excepturi vel voluptate nisi molestiae soluta. Et nam et impedit illo accusamus sed earum est recusandae. Et delectus repellat enim distinctio velit et.',
-      pageCount: 965,
-      category: 'Biografias',
-      imageUrl: 'https://files-books.ioasys.com.br/Book-5.jpg',
-      language: 'Português',
-      isbn10: '3355205900',
-      isbn13: '112-3355205900',
-      publisher: 'Martins - Xavier',
-      published: 2019,
-      id: '60171639faf5de22b804a16c',
-    },
-    {
-      authors: ['Frederico Silva', 'Márcia Xavier'],
-      title: 'Aspernatura',
-      description:
-        'Repellat velit neque delectus mollitia. Et eos nostrum id blanditiis odio sed. Dolorem atque sit tempora et excepturi sint suscipit at.\n \rAb voluptatum possimus. Culpa laborum consequuntur sit molestiae repellendus eos distinctio. Asperiores quia consectetur perspiciatis nobis et exercitationem hic distinctio.',
-      pageCount: 810,
-      category: 'Biografias',
-      imageUrl: 'https://files-books.ioasys.com.br/Book-10.jpg',
-      language: 'Inglês',
-      isbn10: '9007883404',
-      isbn13: '984-9007883404',
-      publisher: 'Oliveira, Martins and Pereira',
-      published: 2016,
-      id: '60171639faf5de22b804a076',
-    },
-    {
-      authors: ['Raul Pereira', 'Júlia Pereira Filho', 'Natália Barros Jr.'],
-      title: 'Assumenda',
-      description:
-        'Est cupiditate rerum sed nisi quam dolorem vel qui veniam. Veritatis quam expedita. Dolor unde animi est dolor unde qui nisi. Iusto in saepe repellendus officia omnis aut reiciendis sapiente. Voluptate et at ut. Velit est iure repellat doloribus omnis earum laborum.\n \rModi sapiente laudantium similique recusandae modi eveniet minima sint in. Eum autem nihil est enim a nostrum quaerat magnam. Et tempora iure quidem aliquid rerum accusamus id.',
-      pageCount: 990,
-      category: 'Biografias',
-      imageUrl: 'https://files-books.ioasys.com.br/Book-0.jpg',
-      language: 'Inglês',
-      isbn10: '6163701883',
-      isbn13: '951-6163701883',
-      publisher: 'Barros - Xavier',
-      published: 2003,
-      id: '60171639faf5de22b804a06e',
-    },
-    {
-      authors: ['Lorraine Barros', 'Sra. Ofélia Silva', 'Warley Pereira'],
-      title: 'Aut',
-      description:
-        'Qui omnis est commodi consectetur est. Odio ullam id ipsam suscipit numquam iusto iste consectetur. Sed ut est. Qui repellat corrupti veritatis consequatur quos ipsa.\n \rAtque dignissimos et eligendi numquam placeat ex. Consectetur sed aut autem ea id suscipit nihil a. Sunt repellendus suscipit reiciendis quidem sequi aut optio placeat quia. Quidem excepturi vel voluptate nisi molestiae soluta. Et nam et impedit illo accusamus sed earum est recusandae. Et delectus repellat enim distinctio velit et.',
-      pageCount: 965,
-      category: 'Biografias',
-      imageUrl: 'https://files-books.ioasys.com.br/Book-5.jpg',
-      language: 'Português',
-      isbn10: '3355205900',
-      isbn13: '112-3355205900',
-      publisher: 'Martins - Xavier',
-      published: 2019,
-      id: '60171639faf5de22b804a16c',
-    },
-    {
-      authors: ['Lorraine Barros', 'Sra. Ofélia Silva', 'Warley Pereira'],
-      title: 'Aut',
-      description:
-        'Qui omnis est commodi consectetur est. Odio ullam id ipsam suscipit numquam iusto iste consectetur. Sed ut est. Qui repellat corrupti veritatis consequatur quos ipsa.\n \rAtque dignissimos et eligendi numquam placeat ex. Consectetur sed aut autem ea id suscipit nihil a. Sunt repellendus suscipit reiciendis quidem sequi aut optio placeat quia. Quidem excepturi vel voluptate nisi molestiae soluta. Et nam et impedit illo accusamus sed earum est recusandae. Et delectus repellat enim distinctio velit et.',
-      pageCount: 965,
-      category: 'Biografias',
-      imageUrl: 'https://files-books.ioasys.com.br/Book-5.jpg',
-      language: 'Português',
-      isbn10: '3355205900',
-      isbn13: '112-3355205900',
-      publisher: 'Martins - Xavier',
-      published: 2019,
-      id: '60171639faf5de22b804a16c',
-    },
-  ];
+  const handleBookSelected = (bookId) => {
+    const bookSelectedFilter = booksData.filter((book) => book.id === bookId);
+
+    setBookSelected(bookSelectedFilter);
+    setBookDetailModalVisible(true);
+  };
 
   return (
     <Container>
@@ -305,7 +139,7 @@ const Dashboard = () => {
         </LogoContainer>
         <DashboardDetail>
           <Detail>
-            Bem vindo, <strong>{user.name}</strong>
+            Bem vindo, <strong>{user || 'recrutador'}</strong>
           </Detail>
           <LogoutContainer onClick={handleLogout}>
             <LogoutIcon />
@@ -313,11 +147,11 @@ const Dashboard = () => {
         </DashboardDetail>
       </DashboardHeader>
       <BooksContainer>
-        {data.map((book) => (
+        {booksData.map((book) => (
           <BookCard
             bookData={book}
             key={book.id}
-            onClick={() => setBookDetailModalVisible(true)}
+            onClick={() => handleBookSelected(book.id)}
           />
         ))}
       </BooksContainer>
@@ -334,6 +168,7 @@ const Dashboard = () => {
       <BookDetailModal
         visible={bookDetailModalVisible}
         onClose={() => setBookDetailModalVisible(false)}
+        bookData={bookSelected}
       />
     </Container>
   );

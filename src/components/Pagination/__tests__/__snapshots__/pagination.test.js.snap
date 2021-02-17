@@ -4,62 +4,66 @@ exports[`Pagination Deve renderizar o componente corretamente 1`] = `
 <body>
   <div>
     <div
-      class="sc-bdfBwQ enbGoq pagination-container"
-      id="pagination"
+      class="sc-bdfBwQ bNOGCm"
     >
-      <span
-        class="sc-gsTCUz"
-      >
-        Página 
-        <strong>
-          2
-        </strong>
-         de 
-        <strong>
-          10
-        </strong>
-      </span>
       <div
-        class="sc-dlfnbm dvbuTo"
-        data-testid="button-left"
+        class="sc-gsTCUz Edwuc pagination-container"
+        id="pagination"
       >
-        <svg
-          class="sc-hKgILt jCnWdz"
-          fill="none"
-          height="1em"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
+        <span
+          class="sc-dlfnbm"
         >
-          <polyline
-            points="15 18 9 12 15 6"
-          />
-        </svg>
-      </div>
-      <div
-        class="sc-dlfnbm dvbuTo"
-        data-testid="button-right"
-      >
-        <svg
-          class="sc-eCssSg kmNnxw"
-          fill="none"
-          height="1em"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
+          Página 
+          <strong>
+            2
+          </strong>
+           de 
+          <strong>
+            10
+          </strong>
+        </span>
+        <div
+          class="sc-hKgILt ilIdCi"
+          data-testid="button-left"
         >
-          <polyline
-            points="9 18 15 12 9 6"
-          />
-        </svg>
+          <svg
+            class="sc-eCssSg kmNnxw"
+            fill="none"
+            height="1em"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline
+              points="15 18 9 12 15 6"
+            />
+          </svg>
+        </div>
+        <div
+          class="sc-hKgILt ilIdCi"
+          data-testid="button-right"
+        >
+          <svg
+            class="sc-jSgupP exfUFF"
+            fill="none"
+            height="1em"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline
+              points="9 18 15 12 9 6"
+            />
+          </svg>
+        </div>
       </div>
     </div>
   </div>

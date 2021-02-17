@@ -27,7 +27,7 @@ const BookCard = ({ bookData, onClick, className, id }) => (
     id={id}
   >
     <BookContainer>
-      <BookImage>{bookData.imageUrl}</BookImage>
+      <BookImage imageUrl={bookData.imageUrl} />
       <BookDetail>
         <BookTitle>{bookData.title}</BookTitle>
         {bookData.authors.map((author) => (

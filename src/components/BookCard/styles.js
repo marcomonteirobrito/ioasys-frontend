@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-// import Teste from '../../assets/teste.jpg';
 import Colors from '../../commons/Colors';
 
 export const Container = styled.div`
@@ -16,16 +15,20 @@ export const Container = styled.div`
   cursor: pointer;
 `;
 export const BookContainer = styled.div`
-  width: 224px;
-  height: 122px;
+  max-width: 244px;
+  max-height: 140px;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
-export const BookImage = styled.div`
+export const BookImage = styled.img`
+  background: ${(props) => `url(${props.imageUrl})`} no-repeat;
   width: 81px;
   height: 122px;
+  background-position: center;
+  background-size: cover;
 `;
+
 export const BookDetail = styled.div`
   display: flex;
   align-items: flex-start;
@@ -37,15 +40,20 @@ export const BookDetail = styled.div`
   margin-left: 16px;
 `;
 export const BookTitle = styled.span`
-  max-width: 127px !important;
+  width: 127px;
   height: 20px;
   color: ${Colors.black};
-  margin-bottom: 2px;
+  /* margin-bottom: 2px; */
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 export const BookAuthor = styled.span`
   color: ${Colors.authorBookDetail};
   width: 127px;
   height: 16px;
+  font-size: 12px;
   display: flex;
   flex-direction: column;
 `;
@@ -58,6 +66,7 @@ export const BookInformations = styled.div`
 `;
 export const BookSpan = styled.span`
   color: ${Colors.detailBook};
+  font-size: 12px;
 `;
 
 export const DetailSpan = styled.span``;

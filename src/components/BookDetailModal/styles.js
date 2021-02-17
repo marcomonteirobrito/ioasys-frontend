@@ -10,11 +10,15 @@ export const Container = styled.div`
   width: 769px;
   height: 608px;
 `;
-export const ImageBookContainer = styled.div`
+export const ImageBookContainer = styled.img`
   width: 349px;
   height: 512px;
   margin-left: 32px;
   margin-right: 16px;
+
+  background: ${(props) => `url(${props.imageUrl})`} no-repeat;
+  background-position: center;
+  background-size: cover;
 `;
 export const DetailBookContainer = styled.div`
   display: flex;

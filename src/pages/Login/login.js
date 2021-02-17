@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -43,21 +41,20 @@ const Login = () => {
     }
   };
 
+  const saveUserLocalStorage = (userDTO) => {
+    localStorage.setItem('user', userDTO);
+  };
+
   const saveTokenLocalStorage = async (response) => {
     try {
       localStorage.setItem('token', response.headers.authorization);
       localStorage.setItem('refresh-token', response.headers['refresh-token']);
-      
-      saveUserLocalStorage(response)
 
+      saveUserLocalStorage(response.data.name);
     } catch (err) {
       throw new Error(err);
     }
   };
-
-  const saveUserLocalStorage = (userDTO) {
-    localStorage.setItem('user', userDTO)
-  }
 
   const handleLogin = async () => {
     try {
@@ -73,7 +70,6 @@ const Login = () => {
       history.push('/dashboard');
     } catch (err) {
       setAuthFailed(true);
-      console.error(err.message);
     } finally {
       setLoading(false);
     }
