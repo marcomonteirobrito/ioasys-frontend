@@ -43,6 +43,7 @@ Após executado o código acima, execute o comando `npm start` .
 <p> Para ter acesso as demais APIs precisamos enviar o 'authorization' no header para autorizar a requisição </p>
 <p> Listagem de Livros</p>
 <p> Detalhamento do Livro </p>
+
 ### Pontos para Melhorar
 
 <p>Estilização do card de livros</p>
