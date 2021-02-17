@@ -29,10 +29,10 @@
 ### Instalando aplicação
 
 Execute o comando `npm install` na raiz do projeto para instalar as dependências.
-<img align="center" alt="npminstall" src="imagens/npmInstall.PNG">
+<img align="center" alt="npminstall" src="readme/npmInstall.PNG">
 
 Após executado o código acima, execute o comando `npm start` .
-<img align="center" alt="npmstart" src="imagens/npmStart.PNG">
+<img align="center" alt="npmstart" src="readme/npmStart.PNG">
 
 > Obs: Será aberto na porta 3000
 > Obs: Dados de login: usuario: desafio@ioasys.com.br senha: 12341234
