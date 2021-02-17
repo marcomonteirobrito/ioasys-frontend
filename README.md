@@ -3,21 +3,21 @@
 <h2><strong>:satellite:Tecnologias utilizadas*</strong></h2>
 
 <h2>Frontend</h2>
-<h3>ReactJS <img src="imagens/react.png" alt="react" height="18"> </h3>
+<h3>ReactJS <img src="readme/react.png" alt="react" height="18"> </h3>
 
 <h2>Testes unitários</h2>
-<h3>Testing Livrary <img src="imagens/react.png" alt="react" height="18"> </h3>
+<h3>Testing Livrary </h3>
 
 <h2>Linter</h2>
-<h3>Eslint <img src="imagens/react.png" alt="react" height="18"> </h3>
+<h3>Eslint </h3>
 
 <h2>Code Formater</h2>
-<h3>Prettier <img src="imagens/react.png" alt="react" height="18"> </h3>
+<h3>Prettier </h3>
 
 ## 🚀 Telas aplicação web
 
 <p align="center">
-	<img alt="" title="" src="readme/login.png">
+	<img alt="" title="" src="readme/login.PNG">
 	<img alt="" title="" src="readme/3.PNG">
 	<img alt="" title="" src="readme/2.PNG">
 </p>
@@ -25,10 +25,10 @@
 ### Instalando aplicação
 
 Execute o comando `npm install` na raiz do projeto para instalar as dependências.
-<img align="center" alt="npminstall" src="imagens/npminstall.PNG">
+<img align="center" alt="npminstall" src="imagens/npmInstall.PNG">
 
 Após executado o código acima, execute o comando `npm start` .
-<img align="center" alt="npmstart" src="imagens/npmstart.PNG">
+<img align="center" alt="npmstart" src="imagens/npmStart.PNG">
 
 > Obs: Será aberto na porta 3000
 > Obs: Dados de login: usuario: desafio@ioasys.com.br senha: 12341234
