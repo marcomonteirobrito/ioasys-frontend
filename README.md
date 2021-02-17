@@ -2,21 +2,21 @@
 
 <h2><strong>:satellite:Tecnologias utilizadas*</strong></h2>
 
-<h2>Frontend</h2>
-<h3>ReactJS <img src="readme/react.png" alt="react" height="18"> </h3>
-<a href='https://pt-br.reactjs.org/'></a>
+<h3>Frontend</h3>
+<h4>ReactJS <img src="readme/react.png" alt="react" height="18"> </h4>
+<a href='https://pt-br.reactjs.org/'>Link site ReactJS</a>
 
-<h2>Testes unitários</h2>
-<h3>Testing Livrary </h3>
-<a href='https://testing-library.com/'></a>
+<h3>Testes unitários</h3>
+<h4>Testing Livrary </h4>
+<a href='https://testing-library.com/'>Link site Testing Library</a>
 
-<h2>Linter</h2>
-<h3>Eslint </h3>
-<a href='https://prettier.io/'></a>
+<h3>Linter</h3>
+<h4>Eslint </h4>
+<a href='https://prettier.io/'>Link site Eslint</a>
 
-<h2>Code Formater</h2>
-<h3>Prettier </h3>
-<a href='https://prettier.io/'></a>
+<h3>Code Formater</h3>
+<h4>Prettier </h4>
+<a href='https://prettier.io/'>Link site Prettier</a>
 
 ## 🚀 Telas aplicação web
 
