@@ -49,6 +49,6 @@ Após executado o código acima, execute o comando `npm start` .
 <p>Estilização do card de livros</p>
 <p>Estilização do detalhamento do livro</p>
 
-<h4>Dúvidas entre em contato pelo <a href="https://www.linkedin.com/in/marco-antonio-monteiro-de-brito-541ba0144/" target="_blank">Linkedin</a> </h4>
+<h4>Dúvidas e sugestões entre em contato pelo <a href="https://www.linkedin.com/in/marco-antonio-monteiro-de-brito-541ba0144/" target="_blank">Linkedin</a> </h4>
 
 <h4 align="center"> <em>&lt;/&gt;</em> by <a href="https://github.com/marcomonteirobrito" target="_blank">marcomonteirobrito</a> </h4>
